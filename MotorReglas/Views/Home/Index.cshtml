@@ -1,16 +1,110 @@
-﻿<div class="row">
+﻿@section scripts {
+    @Scripts.Render("~/bundles/app")
+}
+
+<div class="row" style="margin-top:30px;">
     <div class="col-lg-6">
-        <div class="jumbotron">
-            <p class="lead">@Html.Raw(ViewBag.strHechos)</p>
+        <div class="panel panel-default" style="height:300px;overflow-y:scroll;">
+            <div class="panel-heading">
+                <h2 class="panel-title">Hechos</h2>
+            </div>
+            <div class="panel-body">
+                <form data-bind="submit: addHecho" class="form-inline">
+                    <div class="form-group" data-bind="with: newHecho">
+                        <input type="text" class="form-control" placeholder="Nombre" data-bind="value:Nombre"><br>
+                    </div>
+                    <div class="form-group" data-bind="with: newHecho">
+                        <input type="text" class="form-control" placeholder="Estado" data-bind="value:Estado"><br>
+                    </div>
+                    <div class="form-group" data-bind="with: newHecho">
+                        <button type="submit" class="btn btn-primary">Agregar</button>
+                    </div>
+                </form>
+                <ul class="list-group" data-bind="foreach: hechos">
+                    <li class="list-group-item">
+                        <span data-bind="text: Nombre"></span><strong> set </strong><span data-bind="text: Estado"></span>
+                        <small><a href="#" data-bind="click: $parent.deleteHecho">Borrar</a></small>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="jumbotron">
-            <p class="lead">@Html.Raw(ViewBag.strReglas)</p>
+        <div class="panel panel-default" style="height:500px;overflow-y:scroll;">
+            <div class="panel-heading">
+                <h2 class="panel-title">Reglas</h2>
+            </div>
+            <div class="panel-body">
+                <form data-bind="submit: addRegla" class="form-inline">
+                    <div class="form-group" data-bind="with: newRegla">
+                        <input type="text" class="form-control" placeholder="Nombre Hecho" data-bind="value:NombreHecho"><br>
+                    </div>
+                    <div class="form-group" data-bind="with: newRegla">
+                        <input type="text" class="form-control" placeholder="Estado Hecho" data-bind="value:EstadoHecho"><br>
+                    </div>
+                    <div class="form-group" data-bind="with: newRegla">
+                        <input type="text" class="form-control" placeholder="Propiedad" data-bind="value:PropiedadDisp"><br>
+                    </div>
+                    <div class="form-group" data-bind="with: newRegla">
+                        <input type="text" class="form-control" placeholder="Valor" data-bind="value:ValorPropiedad"><br>
+                    </div>
+                    <div class="form-group" data-bind="with: newRegla">
+                        <input type="number" class="form-control" placeholder="Certeza" data-bind="value:Certeza"><br>
+                    </div>
+                    <div class="form-group" data-bind="with: newRegla">
+                        <button type="submit" class="btn btn-primary">Agregar</button>
+                    </div>
+                </form>
+                <ul class="list-group" data-bind="foreach: reglas">
+                    <li class="list-group-item">
+                        <strong>if</strong> <span data-bind="text: NombreHecho"></span><strong> set </strong><span data-bind="text: EstadoHecho"></span><strong> then device with </strong><span data-bind="text: PropiedadDisp"></span><strong> set </strong><span data-bind="text: ValorPropiedad"></span><strong> with certainty </strong> <span data-bind="text: Certeza"></span>
+                        <small><a href="#" data-bind="click: $parent.deleteRegla">Borrar</a></small>
+                    </li>
+                </ul>
+            </div>
         </div>
+        <div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>
 
     </div>
     <div class="col-lg-6">
-        <div class="jumbotron">
-            <p class="lead">@Html.Raw(ViewBag.strDisp)</p>
+        <div class="panel panel-default" style="height:1000px;overflow-y:scroll;">
+            <div class="panel-heading">
+                <h2 class="panel-title">Dispositivos</h2>
+            </div>
+            <div class="panel-body">
+                <form data-bind="submit: addDisp" class="form-inline">
+                    <div class="form-group" data-bind="with: newDisp">
+                        <input type="text" class="form-control" placeholder="Nombre" data-bind="value:Nombre"><br>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Agregar</button>
+                    </div>
+                </form>
+                <form data-bind="submit: addProp" class="form-inline">
+                    <div class="form-group">
+                        <select class="form-control" data-bind="options:dispositivos, optionsText: 'Nombre', value: modDisp"></select>
+                    </div>
+                    <div class="form-group" data-bind="with: newProp">
+                        <input type="text" class="form-control" placeholder="Nombre" data-bind="value:Nombre"><br>
+                    </div>
+                    <div class="form-group" data-bind="with: newProp">
+                        <input type="text" class="form-control" placeholder="Valor" data-bind="value:Valor"><br>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Agregar</button>
+                    </div>
+                </form>
+                <ul class="list-unstyled" data-bind="foreach: dispositivos">
+                    <li>
+                        <strong><span data-bind="text: Nombre"></span></strong>. Certeza: <span data-bind="text: Certeza"></span>
+                        <small><a href="#" data-bind="click: $parent.deleteDisp">Borrar</a></small>
+                        <ul class="list-group" data-bind="foreach: Propiedades">
+                            <li class="list-group-item">
+                                <strong><span data-bind="text: Nombre"></span></strong>: <span data-bind="text: Valor"></span>
+                                <small><a href="#">Borrar</a></small>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

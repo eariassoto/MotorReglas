@@ -165,7 +165,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\DispositivosController.cs" />
+    <Compile Include="Controllers\HechosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PropiedadDispositivoesController.cs" />
+    <Compile Include="Controllers\ReglasController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -173,12 +177,14 @@
     <Compile Include="Models\Dispositivos.cs">
       <DependentUpon>ReglasModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DispositivosDTO.cs" />
     <Compile Include="Models\Hechos.cs">
       <DependentUpon>ReglasModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PropiedadDispositivo.cs">
       <DependentUpon>ReglasModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PropiedadDTO.cs" />
     <Compile Include="Models\Reglas.cs">
       <DependentUpon>ReglasModel.tt</DependentUpon>
     </Compile>
@@ -216,6 +222,7 @@
       <DependentUpon>ReglasModel.edmx</DependentUpon>
       <LastGenOutput>ReglasModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -247,6 +254,8 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\knockout-3.4.0.debug.js" />
+    <Content Include="Scripts\knockout-3.4.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />

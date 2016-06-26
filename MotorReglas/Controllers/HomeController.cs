@@ -27,7 +27,7 @@ namespace MotorReglas.Controllers
             foreach(var r in reglas)
             {
                 var match = db.Hechos.Where(x => x.Nombre.Equals(r.NombreHecho) && x.Estado.Equals(r.EstadoHecho));
-                if(match.Count() == 1)
+                if(match.Count() > 0)
                 {
                     var propiedades = db.PropiedadDispositivo.Where(x => x.Nombre.Equals(r.PropiedadDisp) && x.Valor.Equals(r.ValorPropiedad));
                     foreach (var p in propiedades)
