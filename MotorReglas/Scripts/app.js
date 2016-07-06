@@ -35,6 +35,7 @@
     var hechosUri = '/api/Hechos/';
     var reglasUri = '/api/Reglas/';
     var dispositivosUri = '/api/Dispositivos/';
+    var propiedadesUri = '/api/PropiedadDispositivoes/';
 
     function ajaxHelper(uri, method, data) {
         self.error(''); // Clear error message
@@ -100,16 +101,14 @@
     }
 
     self.addProp = function (formElement) {
-        var disp = {
-            Id: self.modDisp.Id,
-            Nombre: self.modDisp.Nombre,
-            Certeza: self.modDisp.Certeza,
-            PropiedadDispositivo: self.modDisp.Propiedades
+        var prop = {
+            Nombre: self.newDisp.Nombre(),
+            Valor: self.newDisp.Nombre(),
+            IdDisp: self.modDisp.Id
         };
-        self.newProp.idDisp = disp.Id;
-        disp.PropiedadDispositivo.push(self.newProp);
-        console.log(disp);
-        ajaxHelper(dispositivosUri+disp.Id, 'PUT', disp).done(function (item) {
+
+        console.log(n);
+        ajaxHelper(propiedadesUri, 'POST', n).done(function (item) {
             // feo pero di
             ajaxHelper(dispositivosUri, 'GET').done(function (data) {
                 self.dispositivos(data);

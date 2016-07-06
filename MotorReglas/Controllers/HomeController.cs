@@ -41,35 +41,7 @@ namespace MotorReglas.Controllers
 
             db.SaveChanges();
 
-
-            string strHechos = "<strong>Hechos:</strong><br>";
-            foreach(var he in hechos)
-            {
-                strHechos += he.Nombre + " <strong>set</strong> " + he.Estado + "<br>";
-            }
-
-            var strReglas = "<strong>Reglas:</strong><br>";
-            foreach (var r in reglas)
-            {
-                strReglas += "<strong>if</strong> " + r.NombreHecho + " <strong>is</strong> " + r.EstadoHecho + " <strong>then device with</strong> " + r.PropiedadDisp + " <strong>set</strong> " + r.ValorPropiedad + " <strong>certainty of</strong> " + r.Certeza + "<br><br>";
-            }
-
-            var strDisp = "<strong>Dispositivos:</strong><br>";
-            foreach (var d in disp)
-            {
-                strDisp += "<strong>" + d.Nombre + "</strong> <strong>Certeza:</strong> " + d.Certeza + " <br>";
-                var prop = d.PropiedadDispositivo;
-                foreach(var p in prop)
-                {
-                    strDisp += "   " + p.Nombre + " <strong>set</strong> " + p.Valor + "<br>";
-                }
-                strDisp += "<br>";
-            }
-
             ViewBag.Title = "Home Page";
-            ViewBag.strHechos = strHechos;
-            ViewBag.strReglas = strReglas;
-            ViewBag.strDisp = strDisp;
             return View();
         }
     }

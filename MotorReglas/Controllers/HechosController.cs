@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using MotorReglas.Models;
+using System.Web.Http.Results;
 
 namespace MotorReglas.Controllers
 {
@@ -17,9 +18,9 @@ namespace MotorReglas.Controllers
         private RuleEngineDBEntities db = new RuleEngineDBEntities();
 
         // GET: api/Hechos
-        public IQueryable<Hechos> GetHechos()
+        public JsonResult<List<Hechos>> GetHechos()
         {
-            return db.Hechos;
+            return Json(db.Hechos.ToList());
         }
 
         // GET: api/Hechos/5

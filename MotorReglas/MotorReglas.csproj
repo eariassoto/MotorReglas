@@ -181,6 +181,9 @@
     <Compile Include="Models\Hechos.cs">
       <DependentUpon>ReglasModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Mensaje.cs">
+      <DependentUpon>ReglasModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PropiedadDispositivo.cs">
       <DependentUpon>ReglasModel.tt</DependentUpon>
     </Compile>

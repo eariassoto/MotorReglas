@@ -18,7 +18,5 @@ namespace MotorReglas.Models
         public int IdDisp { get; set; }
         public string Nombre { get; set; }
         public string Valor { get; set; }
-    
-        public virtual Dispositivos Dispositivos { get; set; }
     }
 }

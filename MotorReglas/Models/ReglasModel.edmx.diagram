@@ -5,11 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d6aea9d08edf4fb6be59ace9b2e69202" Name="Diagram1">
-        <EntityTypeShape EntityType="RuleEngineDBModel.Dispositivos" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="RuleEngineDBModel.Hechos" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RuleEngineDBModel.PropiedadDispositivo" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="RuleEngineDBModel.Reglas" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <AssociationConnector Association="RuleEngineDBModel.PropiedadDispositivo_fk0" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="RuleEngineDBModel.Dispositivos" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RuleEngineDBModel.Mensaje" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RuleEngineDBModel.PropiedadDispositivo" Width="1.5" PointX="4.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

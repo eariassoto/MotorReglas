@@ -12,10 +12,11 @@ namespace MotorReglas.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Dispositivos
+    public partial class Mensaje
     {
         public int Id { get; set; }
-        public string Nombre { get; set; }
-        public int Certeza { get; set; }
+        public string RelacionadoA { get; set; }
+        public string Urgencia { get; set; }
+        public string Tipo { get; set; }
     }
 }
