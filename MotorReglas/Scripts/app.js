@@ -102,14 +102,12 @@
 
     self.addProp = function (formElement) {
         var prop = {
-            Nombre: self.newDisp.Nombre(),
-            Valor: self.newDisp.Nombre(),
+            Nombre: self.newProp.Nombre(),
+            Valor: self.newProp.Valor(),
             IdDisp: self.modDisp.Id
         };
 
-        console.log(n);
-        ajaxHelper(propiedadesUri, 'POST', n).done(function (item) {
-            // feo pero di
+        ajaxHelper(propiedadesUri, 'POST', prop).done(function (item) {
             ajaxHelper(dispositivosUri, 'GET').done(function (data) {
                 self.dispositivos(data);
             });
@@ -141,8 +139,15 @@
         });
     }
 
+    self.deleteProp = function (item) {
+        console.log(item.Id);
+        ajaxHelper(propiedadesUri + item.Id, 'DELETE').done(function (data) {
+            ajaxHelper(dispositivosUri, 'GET').done(function (data) {
+                self.dispositivos(data);
+            });
+        });
+    }
 
-    // Fetch the initial data.
     getAll();
 };
 

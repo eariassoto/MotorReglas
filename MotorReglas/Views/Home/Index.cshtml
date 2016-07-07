@@ -99,7 +99,7 @@
                         <ul class="list-group" data-bind="foreach: Propiedades">
                             <li class="list-group-item">
                                 <strong><span data-bind="text: Nombre"></span></strong>: <span data-bind="text: Valor"></span>
-                                <small><a href="#">Borrar</a></small>
+                                <small><a href="#" data-bind="click: $parent.deleteProp">Borrar</a></small>
                             </li>
                         </ul>
                     </li>
