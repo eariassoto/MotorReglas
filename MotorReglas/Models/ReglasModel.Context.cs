@@ -25,10 +25,9 @@ namespace MotorReglas.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Hechos> Hechos { get; set; }
-        public virtual DbSet<Reglas> Reglas { get; set; }
-        public virtual DbSet<Dispositivos> Dispositivos { get; set; }
-        public virtual DbSet<Mensaje> Mensaje { get; set; }
         public virtual DbSet<PropiedadDispositivo> PropiedadDispositivo { get; set; }
+        public virtual DbSet<Dispositivos> Dispositivos { get; set; }
+        public virtual DbSet<Reglas> Reglas { get; set; }
+        public virtual DbSet<Hechos> Hechos { get; set; }
     }
 }

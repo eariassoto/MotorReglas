@@ -9,7 +9,6 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using MotorReglas.Models;
-using System.Web.Http.Results;
 
 namespace MotorReglas.Controllers
 {
@@ -18,28 +17,11 @@ namespace MotorReglas.Controllers
         private RuleEngineDBEntities db = new RuleEngineDBEntities();
 
         // GET: api/Dispositivos
-        public JsonResult<IQueryable<DispositivosDTO>> GetDispositivos()
+        public IQueryable<Dispositivos> GetDispositivos()
         {
-            var dispositivos = from b in db.Dispositivos
-                               select new DispositivosDTO()
-                               {
-                                   Id = b.Id,
-                                   Nombre = b.Nombre,
-                                   Certeza = b.Certeza,
-                                   Propiedades = (from p in db.PropiedadDispositivo.Where(x => x.IdDisp == b.Id)
-                                                 select new PropiedadDTO()
-                                                 {
-                                                     Id = p.Id,
-                                                     IdDisp = p.IdDisp,
-                                                     Nombre = p.Nombre,
-                                                     Valor = p.Valor
-                                                 }).ToList()
-                        };
-            //dispositivos.ElementAt(0).Propiedades.Add(new PropiedadDTO() { Nombre = "a", Valor = "b" });
-            Console.Write("fml");
-            return Json(dispositivos);
+            return db.Dispositivos;
         }
-        
+
         // GET: api/Dispositivos/5
         [ResponseType(typeof(Dispositivos))]
         public IHttpActionResult GetDispositivos(int id)

@@ -1,32 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using MotorReglas.Models;
 
 namespace MotorReglas.Controllers
 {
-    public class PropiedadDispositivoesController : ApiController
+    public class PropiedadDispositivosController : ApiController
     {
-        private RuleEngineDBEntities db = new RuleEngineDBEntities();
+        private readonly RuleEngineDBEntities _db = new RuleEngineDBEntities();
 
-        // GET: api/PropiedadDispositivoes
+        // GET: api/PropiedadDispositivos
         public IQueryable<PropiedadDispositivo> GetPropiedadDispositivo()
         {
-            return db.PropiedadDispositivo;
+            return _db.PropiedadDispositivo;
         }
 
-        // GET: api/PropiedadDispositivoes/5
+        // GET: api/PropiedadDispositivos/5
         [ResponseType(typeof(PropiedadDispositivo))]
         public IHttpActionResult GetPropiedadDispositivo(int id)
         {
-            PropiedadDispositivo propiedadDispositivo = db.PropiedadDispositivo.Find(id);
+            PropiedadDispositivo propiedadDispositivo = _db.PropiedadDispositivo.Find(id);
             if (propiedadDispositivo == null)
             {
                 return NotFound();
@@ -35,7 +31,7 @@ namespace MotorReglas.Controllers
             return Ok(propiedadDispositivo);
         }
 
-        // PUT: api/PropiedadDispositivoes/5
+        // PUT: api/PropiedadDispositivos/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutPropiedadDispositivo(int id, PropiedadDispositivo propiedadDispositivo)
         {
@@ -49,11 +45,11 @@ namespace MotorReglas.Controllers
                 return BadRequest();
             }
 
-            db.Entry(propiedadDispositivo).State = EntityState.Modified;
+            _db.Entry(propiedadDispositivo).State = EntityState.Modified;
 
             try
             {
-                db.SaveChanges();
+                _db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -70,7 +66,7 @@ namespace MotorReglas.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/PropiedadDispositivoes
+        // POST: api/PropiedadDispositivos
         [ResponseType(typeof(PropiedadDispositivo))]
         public IHttpActionResult PostPropiedadDispositivo(PropiedadDispositivo propiedadDispositivo)
         {
@@ -79,24 +75,24 @@ namespace MotorReglas.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.PropiedadDispositivo.Add(propiedadDispositivo);
-            db.SaveChanges();
+            _db.PropiedadDispositivo.Add(propiedadDispositivo);
+            _db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = propiedadDispositivo.Id }, propiedadDispositivo);
         }
 
-        // DELETE: api/PropiedadDispositivoes/5
+        // DELETE: api/PropiedadDispositivos/5
         [ResponseType(typeof(PropiedadDispositivo))]
         public IHttpActionResult DeletePropiedadDispositivo(int id)
         {
-            PropiedadDispositivo propiedadDispositivo = db.PropiedadDispositivo.Find(id);
+            PropiedadDispositivo propiedadDispositivo = _db.PropiedadDispositivo.Find(id);
             if (propiedadDispositivo == null)
             {
                 return NotFound();
             }
 
-            db.PropiedadDispositivo.Remove(propiedadDispositivo);
-            db.SaveChanges();
+            _db.PropiedadDispositivo.Remove(propiedadDispositivo);
+            _db.SaveChanges();
 
             return Ok(propiedadDispositivo);
         }
@@ -105,14 +101,14 @@ namespace MotorReglas.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }
 
         private bool PropiedadDispositivoExists(int id)
         {
-            return db.PropiedadDispositivo.Count(e => e.Id == id) > 0;
+            return _db.PropiedadDispositivo.Count(e => e.Id == id) > 0;
         }
     }
 }

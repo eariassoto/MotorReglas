@@ -11,7 +11,6 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="128" Nullable="false" />
-          <Property Name="Certeza" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Hechos">
           <Key>
@@ -19,16 +18,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="128" Nullable="false" />
-          <Property Name="Estado" Type="varchar" MaxLength="128" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Mensaje">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RelacionadoA" Type="varchar" MaxLength="128" Nullable="false" />
-          <Property Name="Urgencia" Type="varchar" MaxLength="128" Nullable="false" />
-          <Property Name="Tipo" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Valor" Type="varchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="PropiedadDispositivo">
           <Key>
@@ -44,16 +34,16 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NombreHecho" Type="varchar" MaxLength="128" Nullable="false" />
-          <Property Name="EstadoHecho" Type="varchar" MaxLength="128" Nullable="false" />
-          <Property Name="PropiedadDisp" Type="varchar" MaxLength="128" Nullable="false" />
-          <Property Name="ValorPropiedad" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="TipoEvaluacion" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="PropiedadEvaluacion" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="ValorPropiedadEvaluacion" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="PropiedadDispositivo" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="ValorPropiedadDispositivo" Type="varchar" MaxLength="128" Nullable="false" />
           <Property Name="Certeza" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="RuleEngineDBModelStoreContainer">
           <EntitySet Name="Dispositivos" EntityType="Self.Dispositivos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hechos" EntityType="Self.Hechos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Mensaje" EntityType="Self.Mensaje" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PropiedadDispositivo" EntityType="Self.PropiedadDispositivo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reglas" EntityType="Self.Reglas" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -61,49 +51,12 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RuleEngineDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Hechos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Estado" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Reglas">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NombreHecho" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="EstadoHecho" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PropiedadDisp" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ValorPropiedad" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Certeza" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityContainer Name="RuleEngineDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Hechos" EntityType="Self.Hechos" />
-          <EntitySet Name="Reglas" EntityType="Self.Reglas" />
-          <EntitySet Name="Dispositivos" EntityType="RuleEngineDBModel.Dispositivos" />
-          <EntitySet Name="Mensaje" EntityType="RuleEngineDBModel.Mensaje" />
           <EntitySet Name="PropiedadDispositivo" EntityType="RuleEngineDBModel.PropiedadDispositivo" />
+          <EntitySet Name="Dispositivos" EntityType="RuleEngineDBModel.Dispositivos" />
+          <EntitySet Name="Reglas" EntityType="RuleEngineDBModel.Reglas" />
+          <EntitySet Name="Hechos" EntityType="RuleEngineDBModel.Hechos" />
         </EntityContainer>
-        <EntityType Name="Dispositivos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="Certeza" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Mensaje">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RelacionadoA" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="Urgencia" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="PropiedadDispositivo">
           <Key>
             <PropertyRef Name="Id" />
@@ -113,58 +66,75 @@
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="Valor" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Dispositivos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Reglas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoEvaluacion" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="PropiedadEvaluacion" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ValorPropiedadEvaluacion" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="PropiedadDispositivo" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ValorPropiedadDispositivo" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Certeza" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hechos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Valor" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="RuleEngineDBModelStoreContainer" CdmEntityContainer="RuleEngineDBEntities">
-          <EntitySetMapping Name="Hechos">
-            <EntityTypeMapping TypeName="RuleEngineDBModel.Hechos">
-              <MappingFragment StoreEntitySet="Hechos">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Reglas">
-            <EntityTypeMapping TypeName="RuleEngineDBModel.Reglas">
-              <MappingFragment StoreEntitySet="Reglas">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="NombreHecho" ColumnName="NombreHecho" />
-                <ScalarProperty Name="EstadoHecho" ColumnName="EstadoHecho" />
-                <ScalarProperty Name="PropiedadDisp" ColumnName="PropiedadDisp" />
-                <ScalarProperty Name="ValorPropiedad" ColumnName="ValorPropiedad" />
-                <ScalarProperty Name="Certeza" ColumnName="Certeza" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Dispositivos">
-            <EntityTypeMapping TypeName="RuleEngineDBModel.Dispositivos">
-              <MappingFragment StoreEntitySet="Dispositivos">
-                <ScalarProperty Name="Certeza" ColumnName="Certeza" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Mensaje">
-            <EntityTypeMapping TypeName="RuleEngineDBModel.Mensaje">
-              <MappingFragment StoreEntitySet="Mensaje">
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Urgencia" ColumnName="Urgencia" />
-                <ScalarProperty Name="RelacionadoA" ColumnName="RelacionadoA" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PropiedadDispositivo">
             <EntityTypeMapping TypeName="RuleEngineDBModel.PropiedadDispositivo">
               <MappingFragment StoreEntitySet="PropiedadDispositivo">
                 <ScalarProperty Name="Valor" ColumnName="Valor" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="IdDisp" ColumnName="IdDisp" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dispositivos">
+            <EntityTypeMapping TypeName="RuleEngineDBModel.Dispositivos">
+              <MappingFragment StoreEntitySet="Dispositivos">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reglas">
+            <EntityTypeMapping TypeName="RuleEngineDBModel.Reglas">
+              <MappingFragment StoreEntitySet="Reglas">
+                <ScalarProperty Name="Certeza" ColumnName="Certeza" />
+                <ScalarProperty Name="ValorPropiedadDispositivo" ColumnName="ValorPropiedadDispositivo" />
+                <ScalarProperty Name="PropiedadDispositivo" ColumnName="PropiedadDispositivo" />
+                <ScalarProperty Name="ValorPropiedadEvaluacion" ColumnName="ValorPropiedadEvaluacion" />
+                <ScalarProperty Name="PropiedadEvaluacion" ColumnName="PropiedadEvaluacion" />
+                <ScalarProperty Name="TipoEvaluacion" ColumnName="TipoEvaluacion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hechos">
+            <EntityTypeMapping TypeName="RuleEngineDBModel.Hechos">
+              <MappingFragment StoreEntitySet="Hechos">
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

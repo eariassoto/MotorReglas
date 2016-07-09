@@ -15,10 +15,11 @@ namespace MotorReglas.Models
     public partial class Reglas
     {
         public int Id { get; set; }
-        public string NombreHecho { get; set; }
-        public string EstadoHecho { get; set; }
-        public string PropiedadDisp { get; set; }
-        public string ValorPropiedad { get; set; }
+        public string TipoEvaluacion { get; set; }
+        public string PropiedadEvaluacion { get; set; }
+        public string ValorPropiedadEvaluacion { get; set; }
+        public string PropiedadDispositivo { get; set; }
+        public string ValorPropiedadDispositivo { get; set; }
         public int Certeza { get; set; }
     }
 }

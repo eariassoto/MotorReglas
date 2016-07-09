@@ -168,20 +168,16 @@
     <Compile Include="Controllers\DispositivosController.cs" />
     <Compile Include="Controllers\HechosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PropiedadDispositivoesController.cs" />
+    <Compile Include="Controllers\MensajesController.cs" />
+    <Compile Include="Controllers\PropiedadDispositivosController.cs" />
     <Compile Include="Controllers\ReglasController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Dispositivos.cs">
       <DependentUpon>ReglasModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DispositivosDTO.cs" />
     <Compile Include="Models\Hechos.cs">
-      <DependentUpon>ReglasModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Mensaje.cs">
       <DependentUpon>ReglasModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PropiedadDispositivo.cs">
@@ -206,6 +202,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ReglasModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ResultadoDispositivo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

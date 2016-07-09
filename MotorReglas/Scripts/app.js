@@ -7,7 +7,7 @@
 
     self.newHecho = {
         Nombre: ko.observable(),
-        Estado: ko.observable()
+        Valor: ko.observable()
     }
     self.newDisp = {
         Nombre: ko.observable(),
@@ -15,10 +15,11 @@
         Propiedades: ko.observableArray()
     }
     self.newRegla = {
-        NombreHecho: ko.observable(),
-        EstadoHecho: ko.observable(),
-        PropiedadDisp: ko.observable(),
-        ValorPropiedad: ko.observable(),
+        TipoEvaluacion: ko.observable(),
+        PropiedadEvaluacion: ko.observable(),
+        ValorPropiedadEvaluacion: ko.observable(),
+        PropiedadDispositivo: ko.observable(),
+        ValorPropiedadDispositivo: ko.observable(),
         Certeza: ko.observable()
     }
     self.modDisp = {
@@ -35,7 +36,7 @@
     var hechosUri = '/api/Hechos/';
     var reglasUri = '/api/Reglas/';
     var dispositivosUri = '/api/Dispositivos/';
-    var propiedadesUri = '/api/PropiedadDispositivoes/';
+    var propiedadesUri = '/api/PropiedadDispositivos/';
 
     function ajaxHelper(uri, method, data) {
         self.error(''); // Clear error message
@@ -55,6 +56,7 @@
             self.hechos(data);
         });
         ajaxHelper(reglasUri, 'GET').done(function (data) {
+            console.log(data);
             self.reglas(data);
         });
         ajaxHelper(dispositivosUri, 'GET').done(function (data) {
@@ -65,7 +67,7 @@
     self.addHecho = function (formElement) {
         var hecho = {
             Nombre: self.newHecho.Nombre(),
-            Estado: self.newHecho.Estado()
+            Valor: self.newHecho.Valor()
         };
 
         ajaxHelper(hechosUri, 'POST', hecho).done(function (item) {
@@ -75,10 +77,11 @@
 
     self.addRegla = function (formElement) {
         var regla = {
-            NombreHecho: self.newRegla.NombreHecho(),
-            EstadoHecho: self.newRegla.EstadoHecho(),
-            PropiedadDisp: self.newRegla.PropiedadDisp(),
-            ValorPropiedad: self.newRegla.ValorPropiedad(),
+            TipoEvaluacion: self.newRegla.TipoEvaluacion(),
+            PropiedadEvaluacion: self.newRegla.PropiedadEvaluacion(),
+            ValorPropiedadEvaluacion: self.newRegla.ValorPropiedadEvaluacion(),
+            PropiedadDispositivo: self.newRegla.PropiedadDispositivo(),
+            ValorPropiedadDispositivo: self.newRegla.ValorPropiedadDispositivo(),
             Certeza: self.newRegla.Certeza()
         };
 
